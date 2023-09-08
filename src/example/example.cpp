@@ -62,15 +62,15 @@ int main(int argc, char const *argv[]) {
   if (parser.OpenFile(filebase)) {
     while (parser.ReadNext()) {
       tracker.AddScan(parser.GetRgb(), parser.GetDepth());
-      Eigen::Matrix4d pose = tracker.GetCurrentPose();
-      Eigen::Quaterniond rotation(pose.block<3, 3>(0, 0));
-      result << std::fixed << std::setprecision(6) << parser.GetTimestampDepth()
-             << " " << pose.block<3, 1>(0, 3).transpose() << " "
-             << rotation.vec().transpose() << " " << rotation.w() << std::endl;
-      std::cout << parser.GetIndex() << std::endl;
-      std::cout << tracker.GetCurrentPose() << std::endl;
+      // Eigen::Matrix4d pose = tracker.GetCurrentPose();
+      // Eigen::Quaterniond rotation(pose.block<3, 3>(0, 0));
+      // result << std::fixed << std::setprecision(6) << parser.GetTimestampDepth()
+      //        << " " << pose.block<3, 1>(0, 3).transpose() << " "
+      //        << rotation.vec().transpose() << " " << rotation.w() << std::endl;
+      // std::cout << parser.GetIndex() << std::endl;
+      // std::cout << tracker.GetCurrentPose() << std::endl;
 
-      cv::Mat virtual_rgb = tracker.GenerateRgb(1280, 960);
+      cv::Mat virtual_rgb = tracker.GenerateRgb(2560, 1440);
       cv::imshow("RGB", virtual_rgb);
       int k = cv::waitKey(1);
       if (k == 27) {

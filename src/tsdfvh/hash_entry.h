@@ -8,6 +8,7 @@
 
 namespace refusion {
 
+// The tsdfvh represents the tsdf based on the voxel hashing.
 namespace tsdfvh {
 
 /**

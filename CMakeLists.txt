@@ -5,7 +5,12 @@ add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED)
 find_package(CUDA REQUIRED)
-find_package(OpenCV REQUIRED)
+
+set(OpenCV_DIR /usr/local/opencv3.4.1/share/OpenCV)
+find_package(OpenCV 3.4.1 REQUIRED)
+include_directories(SYSTEM ${OpenCV_INCLUDE_DIRS} /usr/local/opencv3.4.1/include)
+link_directories(${OpenCV_LIBS} /usr/local/opencv3.4.1/lib)
+
 find_package(Eigen3 REQUIRED)
 
 set(CUDA_SEPARABLE_COMPILATION ON)
